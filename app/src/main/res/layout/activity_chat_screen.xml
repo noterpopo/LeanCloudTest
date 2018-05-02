@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <android.gesture.GestureOverlayView
+        android:id="@+id/gestureOverlayView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gestureColor="#000"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="手势输入数字">
+        </EditText>
+
+    </android.gesture.GestureOverlayView>
+
+</RelativeLayout>
