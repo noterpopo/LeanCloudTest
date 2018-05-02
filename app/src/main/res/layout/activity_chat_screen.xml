@@ -12,13 +12,13 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" >
 
-        <EditText
-            android:id="@+id/editText1"
+
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="手势输入数字">
-        </EditText>
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
 
     </android.gesture.GestureOverlayView>
 
