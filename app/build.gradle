@@ -33,7 +33,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    compile 'com.android.support:support-v4:21.0.3'
     // LeanCloud 基础包
     compile 'cn.leancloud.android:avoscloud-sdk:v4.6.4'
     // 推送与实时聊天需要的包
@@ -52,4 +51,18 @@ dependencies {
 
     compile 'me.yuqirong:cardswipelayout:1.0.0'
 
+    compile 'com.android.support:support-v4:26.1.0'
+
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            // Skip multidex because it follows a different versioning pattern.
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }

@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.avos.avoscloud.im.v2.messages.AVIMTextMessage;
 import com.popo.leancloudtest.R;
 
 import java.util.ArrayList;
@@ -15,17 +17,19 @@ import java.util.ArrayList;
  */
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
-    private ArrayList<Message> mMessages;
+    private ArrayList<AVIMTextMessage> mMessages;
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder{
         ImageView mImageView;
+        TextView mTextView;
         MessageViewHolder(View itemView){
             super(itemView);
             mImageView=(ImageView)itemView.findViewById(R.id.iv_avatar);
+            mTextView=(TextView)itemView.findViewById(R.id.tv_name);
         }
     }
 
-    public MessageAdapter(ArrayList<Message> messages) {
+    public MessageAdapter(ArrayList<AVIMTextMessage> messages) {
         mMessages = messages;
     }
 
@@ -37,7 +41,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public void onBindViewHolder(MessageViewHolder holder, int position) {
-
+        holder.mTextView.setText(mMessages.get(position).getText());
     }
 
     @Override

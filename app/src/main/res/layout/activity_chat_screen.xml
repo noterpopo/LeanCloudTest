@@ -4,7 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <android.gesture.GestureOverlayView
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <com.popo.leancloudtest.moudles.Chat.MyGestureLayoutView
         android:id="@+id/gestureOverlayView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,14 +19,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" >
 
+    </com.popo.leancloudtest.moudles.Chat.MyGestureLayoutView>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_view"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-
-    </android.gesture.GestureOverlayView>
 
 </RelativeLayout>

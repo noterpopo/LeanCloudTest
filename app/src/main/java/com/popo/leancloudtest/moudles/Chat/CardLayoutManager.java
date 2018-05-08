@@ -1,6 +1,5 @@
 package com.popo.leancloudtest.moudles.Chat;
 
-import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MotionEvent;
@@ -61,7 +60,9 @@ public class CardLayoutManager extends RecyclerView.LayoutManager{
                 } else {
                     // 设置 mTouchListener 的意义就在于我们想让处于顶层的卡片是可以随意滑动的
                     // 而第二层、第三层等等的卡片是禁止滑动的
-                    view.setOnTouchListener(mOnTouchListener);
+                    if(mRecyclerView.getAdapter().getItemCount()>1){
+                        view.setOnTouchListener(mOnTouchListener);
+                    }
                 }
             }
         }else {
@@ -82,7 +83,9 @@ public class CardLayoutManager extends RecyclerView.LayoutManager{
                     view.setScaleY(1 - position * CardConfig.DEFAULT_SCALE);
                     view.setTranslationY(position * view.getMeasuredHeight() / CardConfig.DEFAULT_TRANSLATE_Y);
                 } else {
-                    view.setOnTouchListener(mOnTouchListener);
+                    if(mRecyclerView.getAdapter().getItemCount()>1){
+                        view.setOnTouchListener(mOnTouchListener);
+                    }
                 }
             }
         }
@@ -93,9 +96,7 @@ public class CardLayoutManager extends RecyclerView.LayoutManager{
         public boolean onTouch(View v, MotionEvent event) {
             RecyclerView.ViewHolder childViewHolder = mRecyclerView.getChildViewHolder(v);
             // 把触摸事件交给 mItemTouchHelper，让其处理卡片滑动事件
-            if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-                mItemTouchHelper.startSwipe(childViewHolder);
-            }
+            mItemTouchHelper.startSwipe(childViewHolder);
             return false;
         }
     };

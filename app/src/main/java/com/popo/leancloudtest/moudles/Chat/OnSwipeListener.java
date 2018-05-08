@@ -2,8 +2,10 @@ package com.popo.leancloudtest.moudles.Chat;
 
 import android.support.v7.widget.RecyclerView;
 
+import com.avos.avoscloud.im.v2.messages.AVIMTextMessage;
+
 /**
- * Created by jszu on 2018/5/2.
+ * Created by popo on 2018/5/2.
  */
 
 public interface OnSwipeListener {
@@ -24,7 +26,7 @@ public interface OnSwipeListener {
      * @param t          该滑出卡片的数据
      * @param direction  卡片滑出的方向，CardConfig.SWIPED_LEFT 为左边滑出；CardConfig.SWIPED_RIGHT 为右边滑出
      */
-    void onSwiped(RecyclerView.ViewHolder viewHolder, Message t, int direction);
+    void onSwiped(RecyclerView.ViewHolder viewHolder, AVIMTextMessage t, int direction);
 
     /**
      * 所有的卡片全部滑出时回调
