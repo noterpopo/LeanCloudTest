@@ -11,15 +11,4 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 
-    <com.popo.leancloudtest.moudles.Chat.MyGestureLayoutView
-        android:id="@+id/gestureOverlayView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gestureColor="#000"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-
-    </com.popo.leancloudtest.moudles.Chat.MyGestureLayoutView>
-
-
 </RelativeLayout>

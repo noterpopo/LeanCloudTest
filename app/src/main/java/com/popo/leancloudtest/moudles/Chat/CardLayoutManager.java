@@ -1,8 +1,6 @@
 package com.popo.leancloudtest.moudles.Chat;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,11 +12,9 @@ import me.yuqirong.cardswipelayout.CardConfig;
 
 public class CardLayoutManager extends RecyclerView.LayoutManager{
     private RecyclerView mRecyclerView;
-    private ItemTouchHelper mItemTouchHelper;
 
-    public CardLayoutManager(RecyclerView recyclerView, ItemTouchHelper itemTouchHelper) {
+    public CardLayoutManager(RecyclerView recyclerView) {
         mRecyclerView = recyclerView;
-        mItemTouchHelper = itemTouchHelper;
     }
 
     @Override
@@ -57,12 +53,6 @@ public class CardLayoutManager extends RecyclerView.LayoutManager{
                     view.setScaleX(1 - position * CardConfig.DEFAULT_SCALE);
                     view.setScaleY(1 - position * CardConfig.DEFAULT_SCALE);
                     view.setTranslationY(position * view.getMeasuredHeight() / CardConfig.DEFAULT_TRANSLATE_Y);
-                } else {
-                    // 设置 mTouchListener 的意义就在于我们想让处于顶层的卡片是可以随意滑动的
-                    // 而第二层、第三层等等的卡片是禁止滑动的
-                    if(mRecyclerView.getAdapter().getItemCount()>1){
-                        view.setOnTouchListener(mOnTouchListener);
-                    }
                 }
             }
         }else {
@@ -82,15 +72,11 @@ public class CardLayoutManager extends RecyclerView.LayoutManager{
                     view.setScaleX(1 - position * CardConfig.DEFAULT_SCALE);
                     view.setScaleY(1 - position * CardConfig.DEFAULT_SCALE);
                     view.setTranslationY(position * view.getMeasuredHeight() / CardConfig.DEFAULT_TRANSLATE_Y);
-                } else {
-                    if(mRecyclerView.getAdapter().getItemCount()>1){
-                        view.setOnTouchListener(mOnTouchListener);
-                    }
                 }
             }
         }
     }
-    private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+    /*private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -99,7 +85,7 @@ public class CardLayoutManager extends RecyclerView.LayoutManager{
             mItemTouchHelper.startSwipe(childViewHolder);
             return false;
         }
-    };
+    };*/
 }
 
 

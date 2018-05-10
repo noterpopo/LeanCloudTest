@@ -48,4 +48,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public int getItemCount() {
         return mMessages.size();
     }
+
+    public void remove(int postion){
+        mMessages.remove(postion);
+        notifyDataSetChanged();
+
+    }
 }

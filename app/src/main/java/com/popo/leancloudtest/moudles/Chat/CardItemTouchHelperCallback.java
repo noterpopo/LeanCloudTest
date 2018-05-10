@@ -43,18 +43,18 @@ public class CardItemTouchHelperCallback extends ItemTouchHelper.Callback{
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         int dragFlags = 0;
-        int swipeFlags = 0;
-        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-        if (layoutManager instanceof CardLayoutManager) {
-            swipeFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
-        }
+        int swipeFlags=0;
+       if(dataList.size()>1){
+           swipeFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+       }
         return makeMovementFlags(dragFlags, swipeFlags);
     }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return false;
+        return true;
     }
+
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -65,13 +65,13 @@ public class CardItemTouchHelperCallback extends ItemTouchHelper.Callback{
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
        if(direction==ItemTouchHelper.LEFT){
            Log.d("hhh","LEFT");
-               viewHolder.itemView.setOnTouchListener(null);
-               int layoutPosition = viewHolder.getLayoutPosition();
-               AVIMTextMessage remove=dataList.remove(layoutPosition);
-               mAdapter.notifyDataSetChanged();
-               if(mListener!=null){
-                   mListener.onSwiped(viewHolder, remove, direction == ItemTouchHelper.LEFT ? CardConfig.SWIPED_LEFT : CardConfig.SWIPED_RIGHT);
-               }
+           viewHolder.itemView.setOnTouchListener(null);
+           int layoutPosition = viewHolder.getLayoutPosition();
+           AVIMTextMessage remove=dataList.remove(layoutPosition);
+           mAdapter.notifyDataSetChanged();
+           if(mListener!=null){
+               mListener.onSwiped(viewHolder, remove, direction == ItemTouchHelper.LEFT ? CardConfig.SWIPED_LEFT : CardConfig.SWIPED_RIGHT);
+           }
 
        }else if(direction==ItemTouchHelper.RIGHT){
            viewHolder.itemView.setOnTouchListener(null);
