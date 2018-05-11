@@ -47,6 +47,7 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
         //长按屏幕超过一定时长，就会触发，就是长按事件
         @Override
         public void onLongPress(MotionEvent e) {
+
             View childViewUnder = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
             if (childViewUnder != null) {
                 RecyclerView.ViewHolder childViewHolder = mRecyclerView.getChildViewHolder(childViewUnder);
@@ -56,20 +57,29 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            ItemTouchHelper.attachToRecyclerView(mRecyclerView);
             if (e1.getX() - e2.getX() > 400) {
-               int postion=mRecyclerView.getAdapter().getItemCount()-1;
+               /*int postion=mRecyclerView.getAdapter().getItemCount()-1;
                 if(postion>0){
                     View childViewUnder = mRecyclerView.findChildViewUnder(e1.getX(), e1.getY());
                     if (childViewUnder != null) {
                         RecyclerView.ViewHolder childViewHolder = mRecyclerView.getChildViewHolder(childViewUnder);
                         ItemTouchHelper.startSwipe(childViewHolder);
                     }
-                }
+                }*/
                 Log.i("hhh", "向左滑...");
                 return true;
             }
             if (e2.getX() - e1.getX() > 400) {
                 Log.i("hhh", "向右滑...");
+                /*int postion=mRecyclerView.getAdapter().getItemCount()-1;
+                if(postion>0){
+                    View childViewUnder = mRecyclerView.findChildViewUnder(e1.getX(), e1.getY());
+                    if (childViewUnder != null) {
+                        RecyclerView.ViewHolder childViewHolder = mRecyclerView.getChildViewHolder(childViewUnder);
+                        ItemTouchHelper.startSwipe(childViewHolder);
+                    }
+                }*/
                 return true;
             }
             if (e1.getY() - e2.getY() > 400) {

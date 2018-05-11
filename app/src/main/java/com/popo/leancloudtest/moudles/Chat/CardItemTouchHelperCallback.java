@@ -61,6 +61,8 @@ public class CardItemTouchHelperCallback extends ItemTouchHelper.Callback{
         return false;
     }
 
+
+
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
        if(direction==ItemTouchHelper.LEFT){
@@ -80,4 +82,5 @@ public class CardItemTouchHelperCallback extends ItemTouchHelper.Callback{
        }
 
     }
+
 }

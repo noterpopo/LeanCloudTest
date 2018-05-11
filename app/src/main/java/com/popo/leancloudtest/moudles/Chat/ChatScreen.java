@@ -63,7 +63,6 @@ public class ChatScreen extends AppCompatActivity {
                                 }
                                 mRecyclerView.setAdapter(new MessageAdapter(dataList));
                                 ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new CardItemTouchHelperCallback(mRecyclerView.getAdapter(),dataList));
-                                itemTouchHelper.attachToRecyclerView(mRecyclerView);
                                 mRecyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(mRecyclerView,itemTouchHelper) {
                                     @Override
                                     public void onItemClick(RecyclerView.ViewHolder viewHolder) {
