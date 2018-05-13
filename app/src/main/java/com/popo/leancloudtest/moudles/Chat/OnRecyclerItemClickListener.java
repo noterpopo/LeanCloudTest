@@ -34,7 +34,6 @@ public abstract class OnRecyclerItemClickListener implements View.OnTouchListene
     private class ItemTouchHelperGestureListener extends GestureDetector.SimpleOnGestureListener{
 
         //长按屏幕超过一定时长，就会触发，就是长按事件
-
         @Override
         public void onLongPress(MotionEvent e) {
 
