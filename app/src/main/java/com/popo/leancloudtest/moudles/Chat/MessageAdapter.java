@@ -19,13 +19,15 @@ import java.util.ArrayList;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
     private ArrayList<AVIMTextMessage> mMessages;
 
+    public void setmMessages(ArrayList<AVIMTextMessage> mMessages) {
+        this.mMessages = mMessages;
+    }
+
     public static class MessageViewHolder extends RecyclerView.ViewHolder{
-        ImageView mImageView;
         TextView mTextView;
         MessageViewHolder(View itemView){
             super(itemView);
-            mImageView=(ImageView)itemView.findViewById(R.id.iv_avatar);
-            mTextView=(TextView)itemView.findViewById(R.id.tv_name);
+            mTextView=(TextView)itemView.findViewById(R.id.contentTextView);
         }
     }
 
@@ -35,7 +37,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter,parent,false);
         return new MessageViewHolder(view);
     }
 
